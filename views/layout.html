@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>DIDA store</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-119546233-1"></script>
+
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'UA-119546233-1');
+
+    $('.carousel').carousel({
+        interval: 2000
+    })
+</script>
+
+<style>  
+    body{
+        background-color:#FFDFDD;
+    }
+    .active a{
+        background-color:#FFAEA8 !important;
+    }
+    footer{
+        background-color:#FFC8C4;
+    }
+    .list-group a{
+        background-color:#FFDFDD;
+    }
+    hr {
+        -moz-border-bottom-colors: none;
+        -moz-border-image: none;
+        -moz-border-left-colors: none;
+        -moz-border-right-colors: none;
+        -moz-border-top-colors: none;
+        border-color: #EEEEEE -moz-use-text-color #FFFFFF;
+        border-style: solid none;
+        border-width: 1px 0;
+        margin: 12px 0;
+    }
+    .thumb {
+        height: 75px;
+        border: 1px solid #000;
+        margin: 10px 5px 0 0;
+      }
+</style>
+</head>
+<body>
+    <nav class="navbar navbar-default navbar-fixed-top" style="background-color:#FFC8C4;">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#" style="font-weight:bold">滴答小舖</a>
+            </div>
+            <ul class="nav navbar-nav">
+              {% block nav %}
+              {% endblock %}
+
+            </ul>
+        </div>
+    </nav>
+    <div class="container" style="margin-top:80px;">
+        <div class="row">
+            <div class="col-sm-8">
+                {% block content %}
+                {% endblock %}
+            </div>
+        <div class="col-sm-4">
+            <table class="table">
+                <thead>
+                    <tr style="background-color:#FFC8C4">
+                        <th>最新公告</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th>
+                            <div class="list-group">
+                                {% for post in newposts %}
+                            <a href="/post/{{(post._id).toString()}}" class="list-group-item">{{post.title}}</a>
+                            {% endfor %}
+                            </div>
+                        </th>                           
+                    </tr>
+                </tbody>
+                <thead>
+                    <tr style="background-color:#FFC8C4">
+                        <th></th>
+                    </tr>
+                </thead>
+            </table>
+            <table class="table">
+                <thead>
+                    <tr style="background-color:#FFC8C4">
+                        <th>連結</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <a href="https://www.facebook.com/didamcshop/"><img src="/public/hyperlinks1.PNG" class="rounded mx-auto d-block" alt="hyperlinks1" width="345" height="180"></a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- <footer class="container-fluid">
+    <p>Footer Text</p>
+</footer> -->
+</body>
+</html>

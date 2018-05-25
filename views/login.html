@@ -1,0 +1,30 @@
+{% extends 'layout.html' %}
+
+{% block title %}New Post{% endblock %}
+
+{% block nav %}
+<li><a href="../">首頁</a></li>
+<li><a href="/article/1">文章</a></li>
+<li><a href="/sell">販賣商品</a></li>
+<li><a href="/fan">粉絲專頁</a></li>
+{% if user === true %}
+<li><a href="/post/new">建立頁面</a></li>
+{% endif %}
+{% if user === false %}
+<li class="active"><a href="/login1">登入</a></li>
+{% endif %}
+{% if user === true %}
+<li><a href="/logout">登出</a></li>
+{% endif %}
+{% endblock %}
+
+{% block content %}
+<form class="form-inline" action="/login" method="post">
+  <div class="form-group">
+      <input class="form-control mx-sm-3" type="text" placeholder="user" name="user" size="40"> 
+      <input class="form-control mx-sm-3" type="password" placeholder="password" name="password" size="40"> 
+      <button type="submit">完成</button>
+  </div>
+</form>
+
+{% endblock %}

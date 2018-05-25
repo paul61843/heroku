@@ -1,0 +1,62 @@
+{% extends 'layout.html' %}
+
+{% block title %}Posts{% endblock %}
+
+{% block nav %}
+<li><a href="../">首頁</a></li>
+<li><a href="/article/1">文章</a></li>
+<li class="active"><a href="/sell">販賣商品</a></li>
+<li><a href="/fan">粉絲專頁</a></li>
+{% if user === true %}
+<li class="new"><a href="/post/new">建立頁面</a></li>
+{% endif %}
+{% if user === false %}
+<li class="login"><a href="/login1">登入</a></li>
+{% endif %}
+{% if user === true %}
+<li class="logout"><a href="/logout">登出</a></li>
+{% endif %}
+{% endblock %}
+
+{% block content %}
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>分類</th>
+                <th>腹魔內容</th>
+                <th>價格</th>
+                <th>庫存數量</th>
+                <th>備註</th>
+            </tr>
+        </thead>
+    <tbody>
+    {% for post in posts %}
+    <tr>
+        <td>{{post.id}}</td>
+        <td>{{post.classification}}</td>
+        <td>{{post.content}}</td>
+        <td>{{post.price}}</td>
+        <td>{{post.num}}</td>
+        <td>{{post.note}}</td>
+    </tr>
+      {% endfor %}
+      {% if user === true %}
+      <form action="/post/sell" method="post">
+        <tr>
+        <td><input type="text" placeholder="id" name="id" size="5"></td>
+        <td><input type="text" placeholder="分類" name="classification" size="5"></td>
+        <td><input type="text" placeholder="腹魔內容" name="content" size="5"></td>
+        <td><input type="text" placeholder="價格" name="price" size="5"></td>
+        <td><input type="text" placeholder="庫存數量" name="num" size="5"></td>
+        <td><input type="text" placeholder="備註" name="note" size="5"></td>
+        </tr>
+      {% endif %}
+        </tbody>
+    </table>
+    {% if user === true %}
+    <input type="submit" value="Create">
+        </form>
+    {% endif %}
+      
+{% endblock %}

@@ -1,0 +1,54 @@
+{% extends 'layout.html' %}
+
+{% block title %}Posts{% endblock %}
+
+{% block nav %}
+<li class="active"><a href="../">首頁</a></li>
+<li><a href="/article/1">文章</a></li>
+<li><a href="/sell">販賣商品</a></li>
+<li><a href="/fan">粉絲專頁</a></li>
+{% if user === true %}
+<li class="new"><a href="/post/new">建立頁面</a></li>
+{% endif %}
+{% if user === false %}
+<li class="login"><a href="/login1">登入</a></li>
+{% endif %}
+{% if user === true %}
+<li class="logout"><a href="/logout">登出</a></li>
+{% endif %}
+{% endblock %}
+
+{% block content %}
+<div id="myCarousel" class="carousel slide" data-ride="carousel">
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+  <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+  <li data-target="#myCarousel" data-slide-to="1"></li>
+  <li data-target="#myCarousel" data-slide-to="2"></li>
+  </ol>
+
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner">
+      <div class="item active">
+          <img src="/public/carousel.jpg" alt="carousel" style="width:100%;">
+      </div>
+
+      <div class="item">
+          <img src="/public/carouse2.jpg" alt="carouse2" style="width:100%;">
+      </div>
+  
+      <div class="item">
+          <img src="/public/carouse3.jpg" alt="carouse3" style="width:100%;">
+      </div>  
+  </div>
+</div>
+    {% for post in posts %}
+    <h3><a href="/post/{{(post._id).toString()}}">{{post.title}}</a></h3>
+      <hr>
+      <img src="/upload/{{post.path}}" class="rounded float-left" alt="Responsive image" style="weight:100%; height:auto; float:left;"> 
+      <p style="padding-left:160px; padding-bottom:80px">{{post.body.substr( 0 , 100 )}}...</p>
+      <p style="text-align:right; word-spacing: 15px">發文者 {{post.created_at.toLocaleDateString()}} 熱度℃ 評論() 喜歡()</p>
+      <p style="clear:left; padding:0px; margin:0px;"></p>
+      {% endfor %}
+
+{% endblock %}
