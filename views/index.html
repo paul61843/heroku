@@ -45,7 +45,7 @@
     {% for post in posts %}
     <h3><a href="/post/{{(post._id).toString()}}">{{post.title}}</a></h3>
       <hr>
-      <img src="/upload/{{post.path}}" class="rounded float-left" alt="Responsive image" style="weight:100%; height:auto; float:left;"> 
+      <img src="/upload/{{post.path}}" class="rounded float-left" alt="Responsive image" style=" height:auto; float:left; margin-bottom: 1%;"> 
       <p style="padding-left:160px; padding-bottom:80px">{{post.body.substr( 0 , 100 )}}...</p>
       <p style="text-align:right; word-spacing: 15px">發文者 {{post.created_at.toLocaleDateString()}} 熱度℃ 評論() 喜歡()</p>
       <p style="clear:left; padding:0px; margin:0px;"></p>
